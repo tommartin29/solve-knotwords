@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Knotwords Solver</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Knotwords Solver</h1>
+            <button id="aboutButton" class="button"><i class="fas fa-question"></i></button>
+        </div>
+
+        <div id="aboutContainer" style="display: none;">
+            <p>This tool helps solve Knotwords puzzles. You provide sets of letters and the number of letters from each set that appear in the final word. The first set should be the first x letters of the word, the second set the second x letters, and so on.</p>
+        </div>
+
+        <div id="resultsContainer" style="display: none;">
+            <h2>Words Found:</h2>
+            <p id="foundWords"></p>
+
+            <h2>Words Matching Pattern:</h2>
+            <p id="matchingWords"></p>
+        </div>
+
+        <div id="formContainer">
+            <form id="wordForm">
+                <div class="form-group">
+                    <label for="numSets">Number of Sets:</label>
+                    <input type="number" id="numSets" name="numSets" min="1" value="1" onchange="createSetInputs()">
+                    <small class="input-example">Example: 2</small>
+                </div>
+
+                <div id="setsContainer">
+                    <!-- The set inputs will be added here by JavaScript -->
+                </div>
+
+                <div class="form-group">
+                    <label for="pattern">Pattern:</label>
+                    <input type="text" id="pattern" name="pattern">
+                    <small class="input-example">Example: ?a??b</small>
+                </div>
+
+                <button type="submit" class="button">Generate Words</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
